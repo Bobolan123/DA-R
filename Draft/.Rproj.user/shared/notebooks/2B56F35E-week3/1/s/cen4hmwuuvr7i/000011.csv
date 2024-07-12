@@ -1,0 +1,4 @@
+"0","#Visualize heatmap among x, x2, x3, y"
+"0","library(corrplot)"
+"0","cor_matrix = cor(data)"
+"0","corrplot(cor_matrix, method = 'color', type =""upper"", tl.col = ""black"", addCoef.col = ""black"", number.cex = 0.8) "

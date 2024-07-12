@@ -1,0 +1,178 @@
+```{r}
+df <- read.csv("missingLemonade2016.csv", fileEncoding = "latin1")
+df
+```
+```{r}
+
+```
+```{r}
+df$Lemon[is.na(df$Lemon)] <- round(mean(df$Lemon, na.rm = TRUE))
+df$Location[is.na(df$Location) | df$Location == "NA"] = "Unknown"
+df$Date[is.na(df$Date) | df$Date == "na"]  = "07/05/2016"
+
+```
+```{r}
+df$Date
+```
+
+```{r}
+df$Date <- as.Date(df$Date, format = "%m/%d/%Y")
+
+# Check the class of each column
+column_classes <- sapply(df, class)
+
+
+
+```
+```{r}
+colSums(is.na(df))
+sapply(df, class)
+```
+```{r}
+df$Orange <- as.numeric(as.character(df$Orange))
+
+df$Orange[df$Orange == '' | df$Orange == 'na' | is.na(df$Orange)] = mean(df$Orange, na.rm = TRUE)
+
+```
+```{r}
+colSums(is.na(df))
+sapply(df, class)
+```
+```{r}
+df$Temperature <- as.numeric(as.character(df$Temperature))
+
+# Step 2: Calculate the mean of the non-NA values in the Temperature column
+temperature_mean <- mean(df$Temperature, na.rm = TRUE)
+
+# Step 3: Replace NA values with the calculated mean
+df$Temperature[is.na(df$Temperature)] <- temperature_mean
+df
+```
+```{r}
+df$Leaflets <- as.numeric(as.character(df$Leaflets))
+
+# Step 2: Calculate the mean of the non-NA values in the Temperature column
+Leaflets_mean <- mean(df$Leaflets, na.rm = TRUE)
+
+# Step 3: Replace NA values with the calculated mean
+df$Temperature[is.na(df$Leaflets) | df$Leaflets == 'NA'] <- Leaflets_mean
+df$Temperature
+
+```
+
+
+```{r}
+df$Temperature()
+df[ , colSums(is.na(df)) == 0]
+
+
+```
+
+
+```{r}
+library(dplyr)
+library(magrittr)
+
+df = starwars
+dim(df)
+
+```
+
+```{r}
+starwars %>% 
+  filter(eye_color =="black")
+
+starwars %>%
+  filter(hair_color != "black", skin_color =="white", height >199)
+```
+```{r}
+colnames(df)
+which(colnames(starwars) == 'gender')
+```
+
+```{r}
+df %>%
+  select(2:7)
+
+df %>%
+  select(2,1,4,6)
+```
+```{r}
+df %>%
+  select(which(colnames(df) == "height"):which(colnames(df) == "name"))
+```
+```{r}
+temp = df %>%
+  select(everything())
+temp
+```
+```{r}
+df %>%
+  select(height:mass, everything())
+```
+```{r}
+df %>%
+  select(ends_with('color'))
+
+```
+
+```{r}
+starwars %>%
+  mutate(BMI = mass/(height/100)^2)
+```
+```{r}
+starwars %>% 
+  mutate(bmi = mass/ (height/100)^2) %>%
+  mutate(bmi= round(bmi,2)) %>% 
+  select(name,height, mass,bmi)
+
+```
+```{r}
+iris %>%
+  select(Species, starts_with("Petal")) %>%
+  mutate(Petal.Area = Petal.Length * Petal.Width)
+
+```
+
+```{r}
+df %>%
+  arrange('height') 
+```
+
+```{r}
+mtcars %>%
+  group_by(cyl) %>%
+  summarise(mean = mean(disp) , n=n())
+```
+
+```{r}
+starwars %>%
+  group_by(species) %>%
+  summarize(
+    count = n(),
+    mass = mean(mass, na.rm = TRUE)
+  ) %>%
+  filter(
+    count>1,
+    mass >50
+  )
+  
+```
+```{r}
+library(tidyr)
+
+
+pivot_longer(messy_data, Student, names_to = "Assessment", values_to = "Grade")
+```
+
+```{r}
+billboard %>%
+  pivot_longer(
+    cols = starts_with("wk"), 
+    names_to ="week", 
+    values_to ="rank" 
+  ) 
+ 
+```
+
+

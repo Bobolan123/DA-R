@@ -1,0 +1,4 @@
+"0","starwars %>% "
+"0","  mutate(bmi = mass/ (height/100)^2) %>%"
+"0","  mutate(bmi= round(bmi,2)) %>% "
+"0","  select(name,height, mass,bmi)"

@@ -1,0 +1,4 @@
+"0","df$Orange <- as.numeric(df$Orange)  # Convert ""Orange"" column to numeric"
+"0","df$Orange[is.na(df$Orange) | df$Orange == ""na"" | df$Orange == """"] = 0"
+"0","df$Orange[df$Orange == 0] = round(median(df$Orange, na.rm = TRUE))"
+"0","View(df)"

@@ -1,0 +1,139 @@
+```{r}
+library(readxl)
+data <- read_excel("Sample - Superstore.xls", sheet = 1) 
+
+summary(data)
+```
+
+```{r}
+colSums(is.na(data))
+```
+
+```{r}
+data <- na.omit(data)
+```
+
+```{r}
+library(dplyr)
+
+```
+
+```{r}
+df <- data %>% select(City, State, Region, Category,  `Sub-Category`, `Product Name`, `Ship Mode`, Quantity, Discount, Profit, Sales  )
+print(df)
+
+```
+
+```{r}
+library(ggplot2)
+library(dplyr)
+```
+
+```{r}
+data_summary <- df %>%
+  group_by(Category) %>%
+  summarize(Total_Profit = sum(Profit))
+
+# Create a bar plot
+ggplot(data_summary, aes(x = Category, y = Total_Profit, fill = Category)) +
+  geom_bar(stat = "identity") +
+  theme_minimal() +
+  labs(title = "Total Profit by Category", x = "Category", y = "Total Profit")
+
+```
+
+```{r}
+# Assuming df contains your data
+data_summary <- df %>%
+  group_by("Category", Sales, Discount) %>%
+  summarize(Total_Profit = sum(Profit))
+
+# Create a bar plot
+ggplot(data_summary, aes(x = Category, y = Total_Profit, fill = Sales, color = Discount)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  theme_minimal() +
+  labs(title = "Total Profit by Category, Sale, and Discount",
+       x = "Category", y = "Total Profit", fill = "Sale", color = "Discount")
+
+```
+
+```{r}
+data_summary <- df %>%
+  group_by("Category", Sales, Discount) %>%
+  summarize(Total_Profit = sum(Profit))
+
+# Create a bar plot
+ggplot(data_summary, aes(x = Category, y = Total_Profit, fill = Sales, color = Discount)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  theme_minimal() +
+  labs(title = "Total Profit by Category, Sale, and Discount",
+       x = "Category", y = "Total Profit", fill = "Sale", color = "Discount")
+
+```
+
+```{r}
+data_summary <- df %>%
+  group_by(`Sub-Category`, Category) %>%
+  summarize(Total_Profit = sum(Profit), .groups = 'drop') %>%
+  arrange(Total_Profit)
+
+
+# Create a bar plot
+ggplot(data_summary, aes(x = reorder(`Sub-Category`, Total_Profit), y = Total_Profit, fill = Category)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  theme_minimal() +
+  labs(title = "Total Profit by Sub-Category", x = "Sub-Category", y = "Total Profit")
+
+```
+
+```{r}
+data_summary <- df %>%
+  filter(Category == "Furniture") %>%
+  group_by(`Sub-Category`, Category) %>%
+  summarize(Total_Profit = sum(Profit), .groups = 'drop') %>%
+  arrange(Total_Profit)
+
+
+# Create a bar plot
+ggplot(data_summary, aes(x = reorder(`Sub-Category`, Total_Profit), y = Total_Profit, fill = Category)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  theme_minimal() +
+  labs(title = "Total Profit by Sub-Category", x = "Sub-Category", y = "Total Profit")
+```
+
+```{r}
+furniture_data <- df %>%
+  filter(Category == "Furniture" & `Sub-Category` %in% c("Tables", "Bookcases"))
+
+ggplot(furniture_data, aes(x = Quantity, y = Discount, color = `Sub-Category`, size = Profit)) +
+  geom_point() +
+  facet_wrap(~`Sub-Category`, scales = "free") +
+  scale_size_continuous(range = c(2, 8)) +
+  labs(title = "Relationship between Sales Discount, Quantity, and Profit for Furniture",
+       x = "Quantity", y = "Discount")
+```
+
+```{r}
+library(ggplot2)
+
+# Assuming you already have furniture_summary and ggplot2 loaded
+
+# Reshape data for easier plotting
+furniture_summary_long <- tidyr::pivot_longer(furniture_summary,
+                                             cols = c(Total_Profit, Total_Sales, Total_Discount),
+                                             names_to = "Variable",
+                                             values_to = "Total_Value")
+
+print(furniture_summary_long)
+# Plot combined chart with facets
+ggplot(furniture_summary_long, aes(x = Region, y = Total_Value, fill = Variable)) +
+  geom_col(position = "dodge") +
+  facet_wrap(~ Variable, scales = "free_y", ncol = 1) +
+  scale_fill_manual(values = c("Total_Profit" = "blue", "Total_Sales" = "green", "Total_Discount" = "red")) +
+  theme_minimal() +
+  labs(title = "Comparison of Profit, Sales, and Discount by Region (Furniture)", 
+       x = "Region", y = "Total Value")
+
+```

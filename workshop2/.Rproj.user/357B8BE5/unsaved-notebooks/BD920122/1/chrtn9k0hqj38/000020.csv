@@ -1,0 +1,14 @@
+"0","# Assuming df contains your data"
+"0","data_summary <- df %>%"
+"0","  group_by(Category, Sales, Discount) %>%"
+"0","  summarize(Total_Profit = sum(Profit))"
+"1","[38;5;250m`summarise()` has grouped output by 'Category', 'Sales'. You can override using the `.groups`
+argument.[39m
+"
+"0","# Create a bar plot"
+"0","ggplot(data_summary, aes(x = Category, y = Total_Profit, fill = Sales, color = Discount)) +"
+"0","  geom_bar(stat = ""identity"", position = ""dodge"") +"
+"0","  theme_minimal() +"
+"0","  labs(title = ""Total Profit by Category, Sale, and Discount"","
+"0","       x = ""Category"", y = ""Total Profit"", fill = ""Sale"", color = ""Discount"")"
+"0",""

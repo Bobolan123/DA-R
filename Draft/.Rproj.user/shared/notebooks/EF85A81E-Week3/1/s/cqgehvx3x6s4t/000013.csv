@@ -1,0 +1,2 @@
+"0","df$Location = ifelse(df$Location == ""na"" | is.na(df$Location), ""Unknown"", df$Location)"
+"0","View(df)"

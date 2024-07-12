@@ -1,0 +1,53 @@
+```{r}
+x = readline(prompt = "Enter an integer: ")
+x = as.integer(x)
+
+if (x>2 & x<5) {
+  print("success")
+}
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+x = 0
+while (x<99) {
+  print(x)
+  x = x + 1
+}
+```
+
+```{r}
+for (i in 1:100) {
+  print(i)
+}
+```
+
+```{r}
+inputabc <- function() {
+  a <- readline("a: ")
+  a <- as.integer(a)
+  b <- readline("b: ")
+  b <- as.integer(b)
+  c <- readline("c: ")
+  c <- as.integer(c)
+  
+  if (!is.na(a) && !is.na(b) && !is.na(c)) {
+    resolve(a,b,c)
+  } else {
+    return(FALSE)
+  }
+}
+resolve(a,b,c) {
+  delta = b*b - 4*a*c
+}
+inputabc()
+
+
+```

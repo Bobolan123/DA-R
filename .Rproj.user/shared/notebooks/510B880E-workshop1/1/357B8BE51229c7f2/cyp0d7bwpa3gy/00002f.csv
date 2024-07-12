@@ -1,0 +1,4 @@
+"0","df$Lemon[is.na(df$Lemon)] <- round(mean(df$Lemon, na.rm = TRUE))"
+"0","df$Location[is.na(df$Location) | df$Location == ""NA""] = ""Unknown"""
+"0","df$Date[is.na(df$Date) | df$Date == ""na""]  = ""07/05/2016"""
+"0",""

@@ -1,0 +1,3 @@
+"0","iris %>%"
+"0","  select(Species, starts_with(""Petal"")) %>%"
+"0","  mutate(Petal.Area = Petal.Length * Petal.Width)"

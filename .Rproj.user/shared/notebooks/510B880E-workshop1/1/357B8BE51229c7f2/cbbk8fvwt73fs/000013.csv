@@ -1,0 +1,6 @@
+"0","df$Orange <- as.numeric(as.character(df$Orange))"
+"2","Warning:"
+"2"," NAs introduced by coercion
+"
+"0","df$Orange[df$Orange == '' | df$Orange == 'na' | is.na(df$Orange)] = mean(df$Orange, na.rm = TRUE)"
+"0",""

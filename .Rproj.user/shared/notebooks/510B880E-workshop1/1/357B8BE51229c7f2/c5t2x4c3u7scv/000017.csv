@@ -1,0 +1,3 @@
+"0",""
+"0","starwars %>%"
+"0","  filter(hair_color != ""black"", skin_color ==""white"", height >199)"

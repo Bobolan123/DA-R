@@ -1,0 +1,2 @@
+"0","df <- read.csv(""missingLemonade2016.csv"", fileEncoding = ""latin1"")"
+"0","df"

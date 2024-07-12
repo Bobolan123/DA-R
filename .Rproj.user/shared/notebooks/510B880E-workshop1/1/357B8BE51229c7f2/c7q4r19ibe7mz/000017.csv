@@ -1,0 +1,7 @@
+"0","df$Date <- as.Date(df$Date, format = ""%m/%d/%Y"")"
+"0",""
+"0","# Check the class of each column"
+"0","column_classes <- sapply(df, class)"
+"0",""
+"0",""
+"0",""

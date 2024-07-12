@@ -1,0 +1,32 @@
+{
+    "id": "66D2A766",
+    "path": "D:/UNI_COURSES/COMP 1810 Data and Web Analytics/R/workshop1/workshop1.Rmd",
+    "project_path": "workshop1/workshop1.Rmd",
+    "type": "r_markdown",
+    "hash": "1827474724",
+    "contents": "",
+    "dirty": false,
+    "created": 1719302533490.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "tempName": "Untitled1",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "51,0",
+        "scrollLine": "50",
+        "rmdVisualMode": "false",
+        "rmdVisualWrapConfigured": "true",
+        "docOutlineVisible": "0",
+        "rmdVisualCollapsedChunks": "",
+        "rmdVisualModeLocation": "55:0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1720508752,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1720508752282,
+    "read_only": false,
+    "read_only_alternatives": []
+}

@@ -1,0 +1,8 @@
+"0","df$Temperature <- as.numeric(as.character(df$Temperature))"
+"0",""
+"0","# Step 2: Calculate the mean of the non-NA values in the Temperature column"
+"0","temperature_mean <- mean(df$Temperature, na.rm = TRUE)"
+"0",""
+"0","# Step 3: Replace NA values with the calculated mean"
+"0","df$Temperature[is.na(df$Temperature)] <- temperature_mean"
+"0","df"

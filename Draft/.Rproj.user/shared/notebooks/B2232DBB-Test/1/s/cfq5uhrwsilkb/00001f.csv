@@ -1,0 +1,7 @@
+"0","x = 0"
+"0","while (X<99) {"
+"0","  print(x)"
+"0","  x = x + 1"
+"0","}"
+"2","Error: object 'X' not found
+"
